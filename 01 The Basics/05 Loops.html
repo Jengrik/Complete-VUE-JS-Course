@@ -1,0 +1,79 @@
+
+<!-- File: Loops -->
+<!--    By: Eng. Jhon Erik Navarrete Gómez                  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--* To get started with Vue without a build step -->
+        <script src="https://unpkg.com/vue@3"></script>
+    
+    <title>Vue Basics</title>
+</head>
+<body>
+    <div id="app">
+        <!--* v-for  -->
+            <!-- Render the element or template block multiple times based on the source data. -->
+            <p><strong>The names are:</strong></p>
+            <p v-for="name in namesArray"> {{name}} </p>
+            <br>
+
+            <p><strong>The names with index are:</strong></p>
+            <p v-for="(name, index) in namesArray"> {{index}}. {{name}} </p>
+            <br>
+
+            <p><strong>The keys/values for Fruits object with index are:</strong></p>
+            <p v-for="(value, key, index) in fruitsObject"> {{index}}. {{key}} = {{value}} </p>
+            <br>
+
+            <p><strong>The keys/values for Animal object with index are:</strong></p>
+            <p v-for="(value, key, index) in animalsObject"> {{index}}. {{key}} = {{value}} </p>
+            <br>
+
+            <p><strong>The keys/values for Animal object with index are:</strong></p>
+            <div v-for="(value, key, index) in animalsObject">
+                <p v-if="typeof value !== 'object'"> {{index}}. {{key}} = {{value}} </p>
+                <div v-else>
+                    <p> {{index}}. {{key}} </p>
+                    <p v-for="(SOvalue, SOkey, SOindex) in value" style="margin-left:2.5em"> {{SOindex}}. {{SOkey}} = {{SOvalue}} </p>
+                </div>
+
+            </div>
+    </div>
+</body>
+<script>
+    const App = {
+        data(){
+            return{
+                namesArray: ['Jhon', 'Erik', 'Viviana', 'Alejandra'],
+                fruitsObject: {
+                    color: 'Orange',
+                    seedsNumber: 32,
+                    isMature: false,
+                },
+                animalsObject: {
+                    type: 'mammal',
+                    legNumber: 4,
+                    hasFamily: true,
+                    family: {
+                        familyName: "The Rockstars",
+                        members: 5,
+                    }
+                }
+            }
+        },
+        methods: {
+            checkAge(){
+                return this.userAge > this.minimumAge? true : false;
+            },
+        },
+    };
+
+    Vue.createApp(App).mount('#app');
+</script>
+</html>
+

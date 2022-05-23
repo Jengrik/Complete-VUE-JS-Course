@@ -1,0 +1,52 @@
+
+<!-- File: About Methods -->
+<!--    By: Eng. Jhon Erik Navarrete Gómez                  -->
+
+<!-- What kind of methods could I use?                      -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--* To get started with Vue without a build step -->
+        <script src="https://unpkg.com/vue@3"></script>
+    
+    <title>Vue Basics</title>
+</head>
+<body>
+    <div id="app">
+        <!--* What lind of data could I render? -->
+        <p>The name is: {{myDataObject.name}} and the age is: {{myDataObject.age}}</p>
+        <p>A possible password is: {{createPosiblePass()}}</p>
+        <p>Another posibility is: {{createPassByLength(8)}}</p>
+    </div>
+</body>
+<script>
+    const App = {
+        data(){
+            return{
+                myDataObject: {name: 'Camilo', age: 35},
+            }
+        },
+        methods: {
+            createPosiblePass(){
+                return `${(this.myDataObject.name).split('')[0]}${this.myDataObject.age}${(this.myDataObject.name).split('').pop()}`
+            },
+            createPassByLength(len){
+                let pass = '';
+                for(let i=0; i<len; i++){
+                    console.log(pass);
+                    let num = 65 + (Math.round((Math.random() * 25)));
+                    pass += String.fromCharCode(num);
+                }
+                return pass;
+            }
+        }
+    };
+
+    Vue.createApp(App).mount('#app');
+</script>
+</html>

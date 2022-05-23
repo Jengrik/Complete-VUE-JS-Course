@@ -1,0 +1,55 @@
+
+<!-- File: About Methods -->
+<!--    By: Eng. Jhon Erik Navarrete Gómez                  -->
+
+<!-- What are Directives? What kind of directives Can I use? -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--* To get started with Vue without a build step -->
+        <script src="https://unpkg.com/vue@3"></script>
+    
+    <title>Vue Basics</title>
+</head>
+<body>
+    <div id="app">
+        <!--* v-if  -->
+            <!-- Conditionally render an element based on the truthy-ness of the expression value. -->
+            <p> Conditionally render using: <strong>v-if</strong></p>
+            <p v-if="checkAge()">You are allowed to see this page.</p>
+            <p v-else-if="userName === 'Jhon'">You are the best!</p>
+            <p v-else >You are NOT allowed to see this page.</p>
+            <br>
+
+        <!--* v-show  -->
+            <!-- Conditionally display an element based on the truthy-ness of the expression value. -->
+            <p> Conditionally render using: <strong>v-SHOW</strong></p>
+            <p v-show="checkAge()">THIS IS THE CONTENT.</p>
+
+    </div>
+</body>
+<script>
+    const App = {
+        data(){
+            return{
+                userName: 'Jhoni',
+                userAge: 19,
+                minimumAge: 18,
+            }
+        },
+        methods: {
+            checkAge(){
+                return this.userAge > this.minimumAge? true : false;
+            },
+        },
+    };
+
+    Vue.createApp(App).mount('#app');
+</script>
+</html>
+

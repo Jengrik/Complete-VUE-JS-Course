@@ -1,0 +1,46 @@
+
+<!-- File: Creating an Instance (Without Build Tools - Dev) -->
+<!--    By: Eng. Jhon Erik Navarrete Gómez                  -->
+
+<!-- How to use "Declarative Rendering" with Vue"?          -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--* To get started with Vue without a build step -->
+        <script src="https://unpkg.com/vue@3"></script>
+    
+    <title>Vue Basics</title>
+</head>
+<body>
+    <div id="app">
+        <!--* What lind of data could I render? -->
+        <p>{{stringMessage}}</p>
+        <p> The bool variable has a <strong>{{boolVariable}}</strong> value!</p>
+        <p> The first element in the array is: {{arrayVariable[0]}}</p>
+        <p> One element in the object is: {{objectVariable.career}}</p>
+        <p> The function returns: {{functionVariable()}}</p>
+    </div>
+</body>
+<script>
+    const App = {
+        data(){
+            return{
+                // What kind of data could I have?
+                stringMessage: 'This message comes from an string!',
+                boolVariable: true,
+                arrayVariable: ['Apple', 'Orange', 'Grapes'],
+                objectVariable: {name: 'Jhon', career: 'Developer'},
+                functionVariable: () => {
+                    return 'This message comes from a function!'
+                }
+            }
+        }
+    };
+
+    Vue.createApp(App).mount('#app');
+</script>
+</html>

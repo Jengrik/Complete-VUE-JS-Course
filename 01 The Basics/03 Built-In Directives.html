@@ -1,0 +1,67 @@
+
+<!-- File: About Directives -->
+<!--    By: Eng. Jhon Erik Navarrete Gómez                  -->
+
+<!-- What are Directives? What kind of directives Can I use? -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--* To get started with Vue without a build step -->
+        <script src="https://unpkg.com/vue@3"></script>
+    
+    <title>Vue Basics</title>
+</head>
+<body>
+    <div id="app">
+        <!--* v-bind  -->
+            <!-- Large Mode: v-bind -->
+            <!-- Shorthand: ( : ) -->
+            <!-- If the binding data is undefined then it doesn't show itself -->
+        <img :src="url" :alt="alt"/>
+        <a :href="link" :rel="relation">Go to Google!</a>
+        <hr>
+
+        <!--* v-text  -->
+            <!-- Change de InnerText of a HTML Tag -->
+        <p v-text="customText"></p>
+        <hr>
+        <p v-html="customHTML"></p>
+        <hr>
+
+        <!--* v-once  -->
+        <p>The user name is: </p>
+        <p> {{userName}} ( It will be updated after 2 Secs )</p>
+        <p v-once> {{userName}} ( It will NOT be updated )</p>
+        {{ updateApp() }}
+    </div>
+</body>
+<script>
+    const App = {
+        data(){
+            return{
+                url: 'https://picsum.photos/200/300',
+                alt: 'Another Image',
+                link: 'https://www.google.com/',
+                relation: undefined,
+                customText: 'This text was wrote by Jhon!',
+                customHTML: '<strong>This is the custom HTML Code</strong>',
+                userName: 'Jhon',
+            }
+        },
+        methods:{
+            updateApp(){
+                setTimeout(() => {
+                    this.userName = 'Erik'; 
+                }, 2000);
+            }
+        }
+    };
+
+    Vue.createApp(App).mount('#app');
+</script>
+</html>
