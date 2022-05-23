@@ -1,0 +1,68 @@
+
+<!-- File: Events -->
+<!--    By: Eng. Jhon Erik Navarrete Gómez                  -->
+
+<!-- How can I catch an event with a directive -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--* To get started with Vue without a build step -->
+        <script src="https://unpkg.com/vue@3"></script>
+    
+    <title>Vue Basics</title>
+</head>
+<body>
+    <div id="app">
+        <p> Paint - Web Version</p>
+        <div id="canvas" v-on:mouseenter="canvasMouseEnter" v-on:mouseleave="canvasMouseLeave" v-on:mousemove="canvasMouseMove">
+
+        </div>
+        <p v-if="mouseIn">The mouse is inside of the canvas! </p>
+        <p v-else>The mouse is outside of the canvas! </p>
+        <div v-if="mouseIn" style="width: 300px; height: 300px;">
+            <p>The coordinates are: </p>
+            <p style="margin-left:2.5em">X: {{XCoordinate}}</p>
+            <p style="margin-left:2.5em">Y: {{YCoordinate}}</p>
+        </div>
+    </div>
+</body>
+<script>
+    const App = {
+        data(){
+            return{
+                mouseIn: false,
+                XCoordinate: 0,
+                YCoordinate: 0,
+            }
+        },
+        methods: {
+            canvasMouseEnter(){
+                this.mouseIn = true;
+            },
+            canvasMouseLeave(){
+                this.mouseIn = false;
+            },
+            canvasMouseMove(event){
+                console.log(event);
+                this.XCoordinate = event.offsetX;
+                this.YCoordinate = event.offsetY;
+            }
+        },
+    };
+
+    Vue.createApp(App).mount('#app');
+</script>
+<style>
+    #canvas {
+        border: 1px solid red;
+        width: 300px;
+        height: 300px;
+    }    
+</style>
+</html>
+
