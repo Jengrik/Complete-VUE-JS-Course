@@ -1,0 +1,56 @@
+<!-- File: Keyboard Events -->
+<!--    By: Eng. Jhon Erik Navarrete Gómez                  -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--* To get started with Vue without a build step -->
+        <script src="https://unpkg.com/vue@3"></script>
+    
+    <title>Vue Basics</title>
+</head>
+<body>
+    <div id="app">
+        <p><strong>KeyPress Function</strong></p>
+        <form>
+            <label for="name-1">First Name:</label><br>
+            <input type="text" id="name-1" name="name-1" v-on:keypress="keyboardEvent($event)" />
+        </form>
+        <p>The last key pressed was: {{key}}</p>
+        
+        <p><strong>Specific KeyPress Function (for a, b and c)</strong></p>
+        <form>
+            <label for="name-2">First Name:</label><br>
+            <input type="text" id="name-2" name="name-2" v-on:keypress.a.b.c="keyboardSpecificEvent($event)" />
+        </form>
+        <p>The last specific key pressed was: {{specificKey}}</p>
+
+    </div>
+</body>
+<script>
+    const App = {
+        data(){
+            return{
+                key: '',
+                specificKey: '',
+            }
+        },
+        methods: {
+            keyboardEvent(event){
+                this.key = event.key;
+            },
+            keyboardSpecificEvent(event){
+                this.specificKey = event.key;
+            },
+        },
+    };
+
+    Vue.createApp(App).mount('#app');
+</script>
+</html>
+
