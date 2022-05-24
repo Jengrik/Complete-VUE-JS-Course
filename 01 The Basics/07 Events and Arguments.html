@@ -1,0 +1,65 @@
+
+<!-- File: Event Modifiers -->
+<!--    By: Eng. Jhon Erik Navarrete Gómez                  -->
+
+<!-- Modifiers -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--* To get started with Vue without a build step -->
+        <script src="https://unpkg.com/vue@3"></script>
+    
+    <title>Vue Basics</title>
+</head>
+<body>
+    <div id="app">
+        <p><strong>Regular Submit Function</strong></p>
+        <form>
+            <label for="name-1">First Name:</label><br>
+            <input type="text" id="name-1" name="name-1"/>
+            <input type="submit" value="SUBMIT" v-on:click="sendInformationA" />
+        </form>
+
+        <p><strong>Modified Submit Function: Inside Function</strong></p>
+        <form>
+            <label for="name-1">First Name:</label><br>
+            <input type="text" id="name-1" name="name-1"/>
+            <input type="submit" value="SUBMIT" v-on:click="sendInformationB($event)" />
+        </form>
+
+        <p><strong>Modified Submit Function: Event Modifier</strong></p>
+        <form>
+            <label for="name-1">First Name:</label><br>
+            <input type="text" id="name-1" name="name-1"/>
+            <input type="submit" value="SUBMIT" v-on:click.prevent="sendInformationA($event)" />
+        </form>
+
+    </div>
+</body>
+<script>
+    const App = {
+        data(){
+            return{
+                
+            }
+        },
+        methods: {
+            sendInformationA(){
+                console.log("The information has been sent!");
+            },
+            sendInformationB(event){
+                event.preventDefault();
+                console.log("The information has been sent!");
+            },
+        },
+    };
+
+    Vue.createApp(App).mount('#app');
+</script>
+</html>
+
