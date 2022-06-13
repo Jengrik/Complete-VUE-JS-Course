@@ -1,0 +1,77 @@
+<!-- File: Using v-model on Forms -->
+<!--    By: Eng. Jhon Erik Navarrete Gómez                  -->
+
+<!-- v:on: Events
+    https://developer.mozilla.org/en-US/docs/Web/Events -->
+
+<!--
+Si las variables que se cargan en el DOM son actualizadas, todo el Template
+será cargado de nuevo.
+    En tal caso, si un metodo es llamado en el Template, el método será llamado
+    cada vez que los datos se actualicen.
+        El v-model actualiza los datos con cada entrada en el formulario y
+        por tanto, los métodos del DOM también son llamados.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--* To get started with Vue without a build step -->
+        <script src="https://unpkg.com/vue@3"></script>
+    
+    <title>Vue Basics</title>
+</head>
+<body>
+    <div id="app">
+        <h2 v-on:click="testingMethod()">Student Form</h2>
+        <form>
+            <label> Name: </label>
+            <input type="text" v-model="name"/>
+        </form>
+        <hr>
+        <h2>Currently Student Data</h2>
+        <div>
+            <p>The name is: {{ name }} and the age is: {{ age }} </p>
+            <p> {{ message }} </p>
+        </div>
+    </div>
+</body>
+<script>
+    const App = {
+        data(){
+            return{
+                name: '',
+                age: 0,
+                isAllowed: false,
+            }
+        },
+        computed: {
+            message(){
+                console.log('The message method has been executed!');
+                return this.isAllowed ? `The student is authorized!` : `The student is NOT authorized!`
+            }
+        },
+        methods: {
+            testingMethod(){
+                console.log('The testing method has been executed!');
+                console.log(`El nombre es: ${this.name}`);
+                console.log(`La edad es: ${this.age}`);
+                console.log(`¿Es estudiante?: ${this.isAllowed}`);
+                this.age += 1;
+            },
+            // message(){
+            //     console.log('The message method has been executed!');
+            //     return this.isAllowed ? `The student is authorized!` : `The student is NOT authorized!`
+            // }
+        }
+        
+    };
+
+    Vue.createApp(App).mount('#app');
+</script>
+</html>
+

@@ -1,0 +1,75 @@
+<!-- File: Styles on VUE 3 -->
+<!--    By: Eng. Jhon Erik Navarrete Gómez                  -->
+
+<!-- v:on: Events
+    https://developer.mozilla.org/en-US/docs/Web/Events -->
+
+    <!-- Este archivo explica el bind en clases -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--* To get started with Vue without a build step -->
+        <script src="https://unpkg.com/vue@3"></script>
+    
+    <title>Vue Basics</title>
+</head>
+<body>
+    <div id="app">
+        <div class="large" v-bind:class="[
+            colorClasses.blueClass.active ? colorClasses.blueClass.name:'',
+            colorClasses.redClass.active ? colorClasses.redClass.name:'',
+        ]">
+            Hola
+        </div>
+        <div id="selector" v-on:click="colorClasses.redClass.active = !colorClasses.redClass.active">
+            Please, click me to switch the styles
+        </div>
+    </div>
+</body>
+<script>
+    const App = {
+        data(){
+            return{
+                colorClasses: {
+                    blueClass: {
+                        name: 'blue',
+                        active: true,
+                    },
+                    redClass: {
+                        name: 'red',
+                        active: false,
+                    }
+                },
+            }
+        },
+    };
+
+    Vue.createApp(App).mount('#app');
+</script>
+
+<style>
+    .element {
+        color: white;
+        background: black;
+        padding: 10px;
+    }
+    .blue {
+        background: blue;
+    }
+    .green { 
+        background: green;
+    }
+    .red {
+        background: red;
+    }
+    .large {
+        font-size: 40px;
+    }
+</style>
+
+</html>
+

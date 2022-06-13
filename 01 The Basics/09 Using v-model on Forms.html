@@ -1,0 +1,62 @@
+<!-- File: Using v-model on Forms -->
+<!--    By: Eng. Jhon Erik Navarrete Gómez                  -->
+
+<!-- v:on: Events
+    https://developer.mozilla.org/en-US/docs/Web/Events -->
+
+<!-- Este archivo explica el uso de la directiva :v-model en un formulario. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--* To get started with Vue without a build step -->
+        <script src="https://unpkg.com/vue@3"></script>
+    
+    <title>Vue Basics</title>
+</head>
+<body>
+    <div id="app">
+        <form v-on:submit.prevent>
+            <label>Name: </label>
+            <input type="text" v-model="dataForm.name"/><br>
+            <hr>
+
+            <label>Lastname: </label>
+            <input type="text" v-model="dataForm.lastname"/>
+            <hr>
+
+            <label>Age: </label>
+            <input type="text" v-model="dataForm.age"/>
+            <hr>
+
+            <input type="submit" v-on:click="submitHandler"/>
+        </form>
+    </div>
+</body>
+<script>
+    const App = {
+        data(){
+            return{
+                dataForm: {
+                    name: '',
+                    lastname: '',
+                    age: '',
+                }
+            }
+        },
+        methods: {
+            submitHandler(){
+                console.log('Los datos del Form son:');
+                console.log(this.dataForm);
+            }
+        }
+    };
+
+    Vue.createApp(App).mount('#app');
+</script>
+</html>
+
