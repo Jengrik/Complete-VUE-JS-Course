@@ -1,0 +1,66 @@
+<!-- File: Using v-model on Forms -->
+<!--    By: Eng. Jhon Erik Navarrete Gómez                  -->
+
+<!-- v:on: Events
+    https://developer.mozilla.org/en-US/docs/Web/Events -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--* To get started with Vue without a build step -->
+        <script src="https://unpkg.com/vue@3"></script>
+    
+    <title>Vue Basics</title>
+</head>
+<body>
+    <div id="app">
+        <h1> {{ sectionName }} </h1>
+        <app-header></app-header>
+        <app-body></app-body>
+        <app-footer></app-footer>
+    </div>
+</body>
+<script>
+    const App = Vue.createApp({
+        data() {
+            return{
+                sectionName: 'Main App',
+            }
+        },
+    });
+
+    App.component('app-header',{
+        data() {
+            return{
+                sectionName: 'Header',
+            }
+        },
+        template: "<div> {{sectionName}} </div>",
+    });
+
+    App.component('app-body',{
+        data() {
+            return{
+                sectionName: 'Body',
+            }
+        },
+        template: "<div> {{sectionName}} </div>",
+    });
+
+    App.component('app-footer',{
+        data() {
+            return{
+                sectionName: 'Footer',
+            }
+        },
+        template: "<div> {{sectionName}} </div>",
+    });
+
+    App.mount('#app');
+</script>
+</html>
+
